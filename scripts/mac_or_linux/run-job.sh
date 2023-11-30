@@ -4,7 +4,7 @@ set -euo pipefail
 
 poetry build
 
-jobName=$(echo "${JOB}" | awk '{ print tolower($1) }')
+#jobName=$(echo "${JOB}" | awk '{ print tolower($1) }')
 jobName=citibike_ingest
 
 if [[ "${jobName}" == "citibike_ingest" ]]; then
