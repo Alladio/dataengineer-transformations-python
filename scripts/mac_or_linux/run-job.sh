@@ -5,19 +5,20 @@ set -euo pipefail
 poetry build
 
 jobName=$(echo "${JOB}" | awk '{ print tolower($1) }')
+jobName=citibike_ingest
 
 if [[ "${jobName}" == "citibike_ingest" ]]; then
     INPUT_FILE_PATH="./resources/citibike/citibike.csv"
     JOB_ENTRY_POINT="jobs/citibike_ingest.py"
-    OUTPUT_PATH="./output_int"
+    OUTPUT_PATH="./output_ingest"
 elif [[ "${jobName}" == "citibike_distance_calculation" ]]; then
     INPUT_FILE_PATH="./output_int"
     JOB_ENTRY_POINT="jobs/citibike_distance_calculation.py"
-    OUTPUT_PATH="./output"
+    OUTPUT_PATH="./output_distance_calculation"
 elif [[ "${jobName}" == "wordcount" ]]; then
     INPUT_FILE_PATH="./resources/word_count/words.txt"
     JOB_ENTRY_POINT="jobs/word_count.py"
-    OUTPUT_PATH="./output"
+    OUTPUT_PATH="./output_count"
 else
   echo "Job name provided was : ${JOB} : failed"
   echo "Job name deduced was : ${jobName} : failed"
