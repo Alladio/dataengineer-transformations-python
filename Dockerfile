@@ -20,5 +20,6 @@ RUN poetry config virtualenvs.in-project false
 WORKDIR /app
 
 COPY ./pyproject.toml /app/pyproject.toml
+COPY . .
 
 RUN poetry install
