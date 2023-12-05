@@ -10,9 +10,9 @@ jobName=$(echo "${JOB}" | awk '{ print tolower($1) }')
 if [[ "${jobName}" == "citibike_ingest" ]]; then
     INPUT_FILE_PATH="./resources/citibike/citibike.csv"
     JOB_ENTRY_POINT="jobs/citibike_ingest.py"
-    OUTPUT_PATH="./output_ingest"
+    OUTPUT_PATH="./output_int"
 elif [[ "${jobName}" == "citibike_distance_calculation" ]]; then
-    INPUT_FILE_PATH="./output_int"
+    INPUT_FILE_PATH="./output_int/part-00000-1aeb14a8-529c-4ed4-bf61-a594b692e915-c000.snappy.parquet"
     JOB_ENTRY_POINT="jobs/citibike_distance_calculation.py"
     OUTPUT_PATH="./output_distance_calculation"
 elif [[ "${jobName}" == "wordcount" ]]; then
